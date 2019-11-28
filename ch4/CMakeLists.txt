@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 project(useSophus)
+set(CMAKE_CXX_FLAGS "-std=c++11")
 
-# 为使用 sophus，需要使用find_package命令找到它
+# In order to use sophus, you need to find it using the find_package command
+# find the header and library files of Sophus, it returns Sophus_INCLUDE_DIRS
 find_package(Sophus REQUIRED)
 include_directories(${Sophus_INCLUDE_DIRS})
 
