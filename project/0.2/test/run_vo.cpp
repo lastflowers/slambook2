@@ -77,14 +77,9 @@ int main ( int argc, char** argv )
         if ( vo->state_ == myslam::VisualOdometry::LOST )
             break;
         Sophus::SE3d Tcw = pFrame->T_c_w_.inverse();
-        // cout << pFrame->T_c_w_.rotationMatrix() << endl;
-        // Tcw.rotationMatrix();
+
         // show the map and the camera pose 
         cv::Affine3d M(
-            // cv::Affine3d::Mat3( 
-            //     Tcw.rotation_matrix()(0,0), Tcw.rotation_matrix()(0,1), Tcw.rotation_matrix()(0,2),
-            //     Tcw.rotation_matrix()(1,0), Tcw.rotation_matrix()(1,1), Tcw.rotation_matrix()(1,2),
-            //     Tcw.rotation_matrix()(2,0), Tcw.rotation_matrix()(2,1), Tcw.rotation_matrix()(2,2)
             cv::Affine3d::Mat3( 
                 Tcw.rotationMatrix()(0,0), Tcw.rotationMatrix()(0,1), Tcw.rotationMatrix()(0,2),
                 Tcw.rotationMatrix()(1,0), Tcw.rotationMatrix()(1,1), Tcw.rotationMatrix()(1,2),
@@ -94,7 +89,6 @@ int main ( int argc, char** argv )
                 Tcw.translation()(0,0), Tcw.translation()(1,0), Tcw.translation()(2,0)
             )
         );
-        // cout << Tcw.rotationMatrix() << endl;
         cv::imshow("image", color );
         cv::waitKey(1);
         vis.setWidgetPose( "Camera", M);
