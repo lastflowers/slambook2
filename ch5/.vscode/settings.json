@@ -2,5 +2,11 @@
     "python.autoComplete.extraPaths": [
         "/home/nesl/catkin_ws/devel/lib/python2.7/dist-packages",
         "/opt/ros/kinetic/lib/python2.7/dist-packages"
-    ]
+    ],
+    // input arguement when cmake:debug
+    // "cmake.debugConfig": {
+    //     "args": [
+    //         "/home/nesl/JJH/slambook2/ch5/imageBasics/ubuntu.png"
+    //     ]
+    // }
 }

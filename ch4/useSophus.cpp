@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
   cout << "SO3 updated = \n" << SO3_updated.matrix() << endl;
 
   cout << "*******************************" << endl;
+
   // Simliar for SE(3)
   Vector3d t(1, 0, 0);           // translation 1 along X
   Sophus::SE3d SE3_Rt(R, t);           // construction SE3 from R, t
@@ -52,7 +53,7 @@ int main(int argc, char **argv) {
   cout << "se3 hat vee = " << Sophus::SE3d::vee(Sophus::SE3d::hat(se3)).transpose() << endl;
 
   // Finally the update
-  Vector6d update_se3; //更新量
+  Vector6d update_se3; //update amount
   update_se3.setZero();
   update_se3(0, 0) = 1e-4;
   Sophus::SE3d SE3_updated = Sophus::SE3d::exp(update_se3) * SE3_Rt;
